@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>for permanent location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>to get location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>to get location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To record audio</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To take picture</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
