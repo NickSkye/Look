@@ -51,8 +51,8 @@ class PhotoViewController: UIViewController {
         
          let test = CGFloat((view.frame.width - (view.frame.width / 2 + 37.5)) + ((view.frame.width / 2) - 37.5) - 9.0)
         
-        let sendButton = UIButton(frame: CGRect(x: test, y: view.frame.height - 77.5, width: 18.0, height: 30.0))
-        sendButton.setImage(#imageLiteral(resourceName: "flashOutline"), for: UIControlState())
+        let sendButton = UIButton(frame: CGRect(x: test, y: view.frame.height - 77.5, width: 50, height: 50.0))
+        sendButton.setImage(#imageLiteral(resourceName: "forwardarrow"), for: UIControlState())
         sendButton.addTarget(self, action: #selector(submitToDB), for: .touchUpInside)
         self.view.addSubview(sendButton)
 	}

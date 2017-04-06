@@ -26,6 +26,8 @@
 		F37B622B1E94502C00A4911A /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B622A1E94502C00A4911A /* ProfileScreen.swift */; };
 		F37B622D1E94504100A4911A /* PictureViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B622C1E94504100A4911A /* PictureViewScreen.swift */; };
 		F37B622F1E94504F00A4911A /* ExploreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B622E1E94504F00A4911A /* ExploreScreen.swift */; };
+		F37B62311E96DC2100A4911A /* MainPageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B62301E96DC2100A4911A /* MainPageScreen.swift */; };
+		F37B62331E96F07B00A4911A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B62321E96F07B00A4911A /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		F37B622A1E94502C00A4911A /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		F37B622C1E94504100A4911A /* PictureViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewScreen.swift; sourceTree = "<group>"; };
 		F37B622E1E94504F00A4911A /* ExploreScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreScreen.swift; sourceTree = "<group>"; };
+		F37B62301E96DC2100A4911A /* MainPageScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageScreen.swift; sourceTree = "<group>"; };
+		F37B62321E96F07B00A4911A /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		FA0DA403B43338B08FDB0E8E /* Pods-lookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lookTests/Pods-lookTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,8 @@
 				F37B622A1E94502C00A4911A /* ProfileScreen.swift */,
 				F37B622C1E94504100A4911A /* PictureViewScreen.swift */,
 				F37B622E1E94504F00A4911A /* ExploreScreen.swift */,
+				F37B62301E96DC2100A4911A /* MainPageScreen.swift */,
+				F37B62321E96F07B00A4911A /* ProfileCell.swift */,
 			);
 			path = look;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37B62331E96F07B00A4911A /* ProfileCell.swift in Sources */,
 				F37B62201E943A0000A4911A /* LookRecordButton.swift in Sources */,
 				F37B622F1E94504F00A4911A /* ExploreScreen.swift in Sources */,
 				F37B622D1E94504100A4911A /* PictureViewScreen.swift in Sources */,
@@ -485,6 +492,7 @@
 				F37B622B1E94502C00A4911A /* ProfileScreen.swift in Sources */,
 				F37B62291E94501F00A4911A /* RegisterScreen.swift in Sources */,
 				F37B62271E94501200A4911A /* LoginScreen.swift in Sources */,
+				F37B62311E96DC2100A4911A /* MainPageScreen.swift in Sources */,
 				F32E30B01E917AF000E6D610 /* look.xcdatamodeld in Sources */,
 				F32E30A81E917AF000E6D610 /* AppDelegate.swift in Sources */,
 			);

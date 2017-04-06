@@ -20,6 +20,10 @@ import SwiftyCam
 
 class VideoViewController: UIViewController {
     
+    var username = ""
+    var responseString = ""
+    var allowed = false
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -59,6 +63,13 @@ class VideoViewController: UIViewController {
         cancelButton.setImage(#imageLiteral(resourceName: "cancel"), for: UIControlState())
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         view.addSubview(cancelButton)
+        
+        let test = CGFloat((view.frame.width - (view.frame.width / 2 + 37.5)) + ((view.frame.width / 2) - 37.5) - 9.0)
+        
+        let sendButton = UIButton(frame: CGRect(x: test, y: view.frame.height - 77.5, width: 50, height: 50.0))
+        sendButton.setImage(#imageLiteral(resourceName: "forwardarrow"), for: UIControlState())
+        sendButton.addTarget(self, action: #selector(submitToDB), for: .touchUpInside)
+        self.view.addSubview(sendButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,10 +81,62 @@ class VideoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func submitToDB() {
+        
+        postVideoToServer(image: "test.png", latitude: "69", longitude: "69", username: "test")
+    }
+    
     @objc fileprivate func playerItemDidReachEnd(_ notification: Notification) {
         if self.player != nil {
             self.player!.seek(to: kCMTimeZero)
             self.player!.play()
         }
     }
+    
+    func postVideoToServer(image: String, latitude: String, longitude: String, username: String){
+        //Contingency Handling. Error handling etc.
+        
+        var request = URLRequest(url: URL(string: "http://www.Intelliskye.com/LookPhp/SetLeaderboard.php")!)
+        
+        request.httpMethod = "POST"
+        
+        var postString: String!
+        print("username to post \(username)")
+        postString = "username=\(username)&image=\(image)&latitude=\(latitude)&longitude=\(longitude)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            self.responseString = String(data: data, encoding: .utf8)!
+            print("responseString = \(self.responseString)")
+            
+        }
+        
+        checkResponseString()
+        task.resume()
+    }
+    
+    
+    func checkResponseString(){
+        print(allowed)
+        if(self.responseString == "Success"){
+            allowed = true
+            print("true///////////////////////////////")
+            
+        }
+        else{
+            allowed = false
+            print("FALSE//////////////////")
+        }
+    }
+
 }

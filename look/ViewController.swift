@@ -14,11 +14,13 @@ import CoreLocation
 class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate, CLLocationManagerDelegate {
     
     var flipCameraButton: UIButton!
+    var backButton: UIButton!
     var flashButton: UIButton!
     var captureButton: LookRecordButton!
     let locationManager = CLLocationManager()
     var currentLatitude = 0.0
     var currentLongitude = 0.0
+    var username = ""
     @IBOutlet weak var map: MKMapView!
     
     override func viewDidLoad() {
@@ -128,6 +130,11 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate, 
         switchCamera()
     }
     
+    @objc private func backAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "cameraToMain", sender: self)
+    }
+
+    
     @objc private func toggleFlashAction(_ sender: Any) {
         flashEnabled = !flashEnabled
         
@@ -154,6 +161,11 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate, 
         flashButton.setImage(#imageLiteral(resourceName: "flashOutline"), for: UIControlState())
         flashButton.addTarget(self, action: #selector(toggleFlashAction(_:)), for: .touchUpInside)
         self.view.addSubview(flashButton)
+        
+        backButton = UIButton(frame: CGRect(x: (((view.frame.width / 2 - 37.5) / 2) - 50.0), y: view.frame.height - (view.frame.height - 30.0), width: 50.0, height: 50.0))
+        backButton.setImage(#imageLiteral(resourceName: "back-icon"), for: UIControlState())
+        backButton.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
+        self.view.addSubview(backButton)
     }
 }
 
