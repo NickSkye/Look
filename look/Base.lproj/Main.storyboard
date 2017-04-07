@@ -111,7 +111,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9iD-vG-dCH">
                                 <rect key="frame" x="0.0" y="282" width="375" height="332"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="50" id="mF4-6U-dif" customClass="ProfileCell" customModule="look" customModuleProvider="target">
@@ -125,11 +125,9 @@
                                                     <rect key="frame" x="8" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHQ-he-LeY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHQ-he-LeY">
                                                     <rect key="frame" x="66" y="5" width="215" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="215" id="O6m-UD-V26"/>
-                                                    </constraints>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -150,7 +148,19 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pIo-EF-sbD" id="R75-3W-Dbn"/>
+                                    <outlet property="delegate" destination="pIo-EF-sbD" id="EMz-Mt-xqx"/>
+                                </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmQ-M9-48v">
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="back-icon"/>
+                                <connections>
+                                    <action selector="backButton:" destination="pIo-EF-sbD" eventType="touchUpInside" id="Dy5-hg-VZJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -159,11 +169,60 @@
                         <outlet property="profilePicture" destination="doD-Sj-QMX" id="Y6K-qD-fCk"/>
                         <outlet property="tableView" destination="9iD-vG-dCH" id="GdD-j3-l7v"/>
                         <outlet property="usernameLbl" destination="Vrv-Gb-c1q" id="SIZ-Eg-otd"/>
+                        <segue destination="awb-LJ-LcJ" kind="presentation" identifier="profileToMain" id="Lfy-hH-HWD"/>
+                        <segue destination="8KQ-1d-hC6" kind="presentation" identifier="profileToPicture" id="5a1-M6-2ZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZ5-cD-oWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="116.49175412293854"/>
+            <point key="canvasLocation" x="754" y="118"/>
+        </scene>
+        <!--Picture View Screen-->
+        <scene sceneID="S7B-Zn-4q7">
+            <objects>
+                <viewController id="8KQ-1d-hC6" customClass="PictureViewScreen" customModule="look" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4ev-ZM-Vf8"/>
+                        <viewControllerLayoutGuide type="bottom" id="22o-Cc-A03"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ppC-82-1xo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7d9-yl-j3T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tt-zz-lIO" customClass="Pictu">
+                                <rect key="frame" x="16" y="97" width="343" height="220"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7od-pe-6KQ">
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="back-icon"/>
+                                <connections>
+                                    <action selector="backButton:" destination="8KQ-1d-hC6" eventType="touchUpInside" id="7Zq-9Z-LpH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pictureImage" destination="8tt-zz-lIO" id="nrv-wE-KCF"/>
+                        <segue destination="pIo-EF-sbD" kind="presentation" identifier="pictureToProfile" id="iW8-OD-XXU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAy-Vq-aLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1565.5999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back-icon" width="1600" height="1600"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lfy-hH-HWD"/>
+        <segue reference="iW8-OD-XXU"/>
+    </inferredMetricsTieBreakers>
 </document>
