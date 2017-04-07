@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4CAA7CF96FEA50E1973AFBB7 /* Pods_lookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A50C8BDF70384BFB8408E05 /* Pods_lookUITests.framework */; };
+		76EB79B2152EFBB7B10E131D /* Pods_look_look.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE88426AFABB91892FFC039 /* Pods_look_look.framework */; };
 		89C2756E21857572D727B2AC /* Pods_look.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFA875ADAAFEA580C47BD72 /* Pods_look.framework */; };
 		9BC7F40CB1999BAD4C8C78CB /* Pods_lookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88A6BFDE1314B13D9D70FB /* Pods_lookTests.framework */; };
 		F32E30A81E917AF000E6D610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E30A71E917AF000E6D610 /* AppDelegate.swift */; };
@@ -50,8 +51,11 @@
 /* Begin PBXFileReference section */
 		0285C4A182E63ABA69F7362D /* Pods-lookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lookTests/Pods-lookTests.release.xcconfig"; sourceTree = "<group>"; };
 		1AFA875ADAAFEA580C47BD72 /* Pods_look.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_look.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B450481B073DFD832C16E3B /* Pods-look-look.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-look-look.release.xcconfig"; path = "Pods/Target Support Files/Pods-look-look/Pods-look-look.release.xcconfig"; sourceTree = "<group>"; };
+		2DE88426AFABB91892FFC039 /* Pods_look_look.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_look_look.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A50C8BDF70384BFB8408E05 /* Pods_lookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FBFF489F765062AEC6DCA8 /* Pods-lookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lookUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lookUITests/Pods-lookUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A988549955000EF1FC274481 /* Pods-look-look.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-look-look.debug.xcconfig"; path = "Pods/Target Support Files/Pods-look-look/Pods-look-look.debug.xcconfig"; sourceTree = "<group>"; };
 		AE88A6BFDE1314B13D9D70FB /* Pods_lookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4E027A1F6853B3FD208E6E /* Pods-lookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lookUITests/Pods-lookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D859A718B4723EB4F8FCB0EC /* Pods-look.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-look.release.xcconfig"; path = "Pods/Target Support Files/Pods-look/Pods-look.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89C2756E21857572D727B2AC /* Pods_look.framework in Frameworks */,
+				76EB79B2152EFBB7B10E131D /* Pods_look_look.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +125,8 @@
 				0285C4A182E63ABA69F7362D /* Pods-lookTests.release.xcconfig */,
 				A0FBFF489F765062AEC6DCA8 /* Pods-lookUITests.debug.xcconfig */,
 				CC4E027A1F6853B3FD208E6E /* Pods-lookUITests.release.xcconfig */,
+				A988549955000EF1FC274481 /* Pods-look-look.debug.xcconfig */,
+				2B450481B073DFD832C16E3B /* Pods-look-look.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 				1AFA875ADAAFEA580C47BD72 /* Pods_look.framework */,
 				AE88A6BFDE1314B13D9D70FB /* Pods_lookTests.framework */,
 				4A50C8BDF70384BFB8408E05 /* Pods_lookUITests.framework */,
+				2DE88426AFABB91892FFC039 /* Pods_look_look.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -397,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-look/Pods-look-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-look-look/Pods-look-look-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		863906AE17FD8127B27114E2 /* [CP] Embed Pods Frameworks */ = {
@@ -427,7 +435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-look/Pods-look-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-look-look/Pods-look-look-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A7809ED7EC83718984F9D596 /* [CP] Copy Pods Resources */ = {
@@ -644,7 +652,7 @@
 		};
 		F32E30D01E917AF000E6D610 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E93FBE7A0610EED9DD29E678 /* Pods-look.debug.xcconfig */;
+			baseConfigurationReference = A988549955000EF1FC274481 /* Pods-look-look.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9KR276P772;
@@ -659,7 +667,7 @@
 		};
 		F32E30D11E917AF000E6D610 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D859A718B4723EB4F8FCB0EC /* Pods-look.release.xcconfig */;
+			baseConfigurationReference = 2B450481B073DFD832C16E3B /* Pods-look-look.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9KR276P772;

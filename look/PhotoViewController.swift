@@ -16,6 +16,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 import UIKit
 import SwiftyCam
 
+
 class PhotoViewController: UIViewController {
     
     var username = ""
@@ -112,4 +113,7 @@ class PhotoViewController: UIViewController {
             print("FALSE//////////////////")
         }
     }
+    
+    
+    
 }
