@@ -19,6 +19,7 @@
 		F32E30B51E917AF000E6D610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E30B31E917AF000E6D610 /* LaunchScreen.storyboard */; };
 		F32E30C01E917AF000E6D610 /* lookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E30BF1E917AF000E6D610 /* lookTests.swift */; };
 		F32E30CB1E917AF000E6D610 /* lookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E30CA1E917AF000E6D610 /* lookUITests.swift */; };
+		F35365491E9C161A001F63B5 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35365481E9C161A001F63B5 /* TitleScreen.swift */; };
 		F37B621F1E943A0000A4911A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621C1E943A0000A4911A /* PhotoViewController.swift */; };
 		F37B62201E943A0000A4911A /* LookRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621D1E943A0000A4911A /* LookRecordButton.swift */; };
 		F37B62211E943A0000A4911A /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621E1E943A0000A4911A /* VideoViewController.swift */; };
@@ -74,6 +75,7 @@
 		F32E30C61E917AF000E6D610 /* lookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32E30CA1E917AF000E6D610 /* lookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lookUITests.swift; sourceTree = "<group>"; };
 		F32E30CC1E917AF000E6D610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35365481E9C161A001F63B5 /* TitleScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		F37B621C1E943A0000A4911A /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		F37B621D1E943A0000A4911A /* LookRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookRecordButton.swift; sourceTree = "<group>"; };
 		F37B621E1E943A0000A4911A /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				F37B622E1E94504F00A4911A /* ExploreScreen.swift */,
 				F37B62301E96DC2100A4911A /* MainPageScreen.swift */,
 				F37B62321E96F07B00A4911A /* ProfileCell.swift */,
+				F35365481E9C161A001F63B5 /* TitleScreen.swift */,
 			);
 			path = look;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 			files = (
 				F37B62331E96F07B00A4911A /* ProfileCell.swift in Sources */,
 				F37B62201E943A0000A4911A /* LookRecordButton.swift in Sources */,
+				F35365491E9C161A001F63B5 /* TitleScreen.swift in Sources */,
 				F37B622F1E94504F00A4911A /* ExploreScreen.swift in Sources */,
 				F37B622D1E94504100A4911A /* PictureViewScreen.swift in Sources */,
 				F32E30AA1E917AF000E6D610 /* ViewController.swift in Sources */,
