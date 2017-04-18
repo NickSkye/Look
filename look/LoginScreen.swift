@@ -25,7 +25,9 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
     var email : String = ""
     var username = ""
    
+    @IBOutlet var usernameField: UITextField!
     
+    @IBOutlet var passwordField: UITextField!
    // let loginbutton = FBSDKLoginButton()
     
     //Login Button Declaration
@@ -54,20 +56,21 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
  
  */
         // Do any additional setup after loading the view, typically from a nib.
-        self.emailField.delegate = self
+        self.usernameField.delegate = self
         self.passwordField.delegate = self
         
         //Set color of text fields to Silver to match text
         let myColor : UIColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
-        emailField.layer.masksToBounds = true
+        usernameField.layer.masksToBounds = true
         passwordField.layer.masksToBounds = true
-        emailField.layer.borderWidth = 1
+        usernameField.layer.borderWidth = 1
         passwordField.layer.borderWidth = 1
-        emailField.layer.borderColor = myColor.cgColor
+        usernameField.layer.borderColor = myColor.cgColor
         passwordField.layer.borderColor = myColor.cgColor
     }
     
     //Print result of Facebook button
+    /*
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil{
             print(error)
@@ -121,13 +124,16 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
         }
     }
     
+ */
+    /*
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of Facebook")
     }
+ */
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField === emailField {
+        if textField === usernameField {
             passwordField.becomeFirstResponder()
         }
         else if textField === passwordField{
@@ -147,9 +153,9 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
     
     func postToServerFunction(){
         //Contingency Handling. Error handling etc.
-        email = emailField.text!
+        username = usernameField.text!
         var password : String = passwordField.text!
-        var request = URLRequest(url: URL(string: "http://dev.celebritiessquared.com/CSPhp/SignIn.php")!)
+        var request = URLRequest(url: URL(string: "http://intelliskye.com/LookPhp/Login.php")!)
         
         if !email.canBeConverted(to: String.Encoding.ascii){
             let alert=UIAlertController(title: "Oops!", message: "Bad Character Entered", preferredStyle: UIAlertControllerStyle.alert);
@@ -161,7 +167,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
             request.httpMethod = "POST"
             
             var postString: String!
-            postString = "email=\(email)&password=\(password)"
+            postString = "username=\(username)&password=\(password)"
             request.httpBody = postString.data(using: String.Encoding.utf8)
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -186,75 +192,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
     
     
     //Check if is a Facebook user in Database
-    func checkFacebookDB(){
         
-        var request = URLRequest(url: URL(string: "http://dev.celebritiessquared.com/CSPhp/IsFacebookUser.php")!)
-        
-        request.httpMethod = "POST"
-        
-        var postString: String!
-        self.responseString = ""
-        
-        postString = "email=\(fbEmail)"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            self.responseString = String(data: data, encoding: .utf8)!
-            print("response = \(self.responseString)")
-        }
-        
-        checkFBresponse()
-        
-        task.resume()
-    }
-    
-    func getToken() -> String{
-        var request = URLRequest(url: URL(string: "http://dev.celebritiessquared.com/CSPhp/GetToken.php")!)
-        
-        request.httpMethod = "POST"
-        
-        var postString: String!
-        var res : String!
-        
-        postString = "email=\(fbEmail)"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            res = String(data: data, encoding: .utf8)!
-            print("response = \(res)")
-            
-            if(res != "Failed")
-            {
-                self.tokenNum = res
-            }
-            else{
-                self.tokenNum = "null"
-            }
-        }
-        task.resume()
-        
-        return self.tokenNum
-    }
     
     ///////////////////
     
@@ -269,30 +207,18 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
     }
     
     
-    func checkFBresponse(){
-        print(fbUser)
-        if(self.responseString == "True"){
-            allowed = true
-            loginbutton.isHidden = true
-        }
-        else{
-            allowed = false
-        }
-    }
     
     ///////////////////
     
-    @IBAction func loginButton(_ sender: Any) {
-        
-        //check with database and change segue to be done programattically so that it confirms the login before going.
-        
+    
+    @IBAction func loginButt(_ sender: Any) {
         postToServerFunction()
         print("ALLOWED CHECKED")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            if(self.allowed || self.responseString == "Success"){ //put if username = username from db and password = password from db then it does segue.
-                
+            if(self.allowed || self.responseString == "Success" || self.responseString == "Resource id #4"){ //put if username = username from db and password = password from db then it does segue.
+                print("ALLOWED")
                 //Sets email in UserDefault.
-                UserDefaults.standard.setValue(self.emailField.text!, forKey: "email")
+                UserDefaults.standard.setValue(self.usernameField.text!, forKey: "username")
                 
                 
                 self.MyKeyChainWrapper.mySetObject(self.passwordField.text, forKey:kSecValueData)
@@ -300,7 +226,7 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
                 UserDefaults.standard.set(true, forKey: "hasLogin")
                 UserDefaults.standard.synchronize()
                 
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                self.performSegue(withIdentifier: "loginToMain", sender: self)
             }
             else if self.responseString == "None"{
                 let alert=UIAlertController(title: "Oops!", message: "Email or Password is incorrect", preferredStyle: UIAlertControllerStyle.alert);
@@ -310,35 +236,31 @@ class LoginScreen: UIViewController, UITextFieldDelegate { //, FBSDKLoginButtonD
             }
         } //this is the semicolon
         
+
+    }
+    
+    
+    
+    
+    @IBAction func needToRegisterButt(_ sender: Any) {
+        self.performSegue(withIdentifier: "loginToRegister", sender: self)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginSegue" {
+        if segue.identifier == "loginToMain" {
             
-            let DestViewController : StartScreen = segue.destination as! StartScreen
+            let DestViewController : MainPageScreen = segue.destination as! MainPageScreen
             // doSomething(sender as! UIButton)
             
-            if email == ""{
-                DestViewController.email = fbEmail
-            }else{
-                DestViewController.email = email
+            
+                DestViewController.username = username
             }
             
-            DestViewController.tokenNum = tokenNum
-        }
+        
+        
         
         //If Facebook login but user does not exist conduct registration page
-        if segue.identifier == "registerSegue"{
-            
-            let DestViewController : RegisterScreen = segue.destination as! RegisterScreen
-            
-            if(self.fbId != ""){
-                DestViewController.email = fbEmail
-                DestViewController.fbFirst = fbFirst
-                DestViewController.fbLast = fbLast
-                DestViewController.fbId = fbId
-            }
-        }
+               }
     }
-}
+

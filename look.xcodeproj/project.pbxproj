@@ -20,6 +20,7 @@
 		F32E30C01E917AF000E6D610 /* lookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E30BF1E917AF000E6D610 /* lookTests.swift */; };
 		F32E30CB1E917AF000E6D610 /* lookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E30CA1E917AF000E6D610 /* lookUITests.swift */; };
 		F35365491E9C161A001F63B5 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35365481E9C161A001F63B5 /* TitleScreen.swift */; };
+		F3761BF31EA034EF0072C0C0 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F3761BF21EA034EF0072C0C0 /* KeychainWrapper.m */; };
 		F37B621F1E943A0000A4911A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621C1E943A0000A4911A /* PhotoViewController.swift */; };
 		F37B62201E943A0000A4911A /* LookRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621D1E943A0000A4911A /* LookRecordButton.swift */; };
 		F37B62211E943A0000A4911A /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B621E1E943A0000A4911A /* VideoViewController.swift */; };
@@ -76,6 +77,10 @@
 		F32E30CA1E917AF000E6D610 /* lookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lookUITests.swift; sourceTree = "<group>"; };
 		F32E30CC1E917AF000E6D610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F35365481E9C161A001F63B5 /* TitleScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
+		F3761BEF1EA02E560072C0C0 /* look.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = look.entitlements; sourceTree = "<group>"; };
+		F3761BF01EA034EE0072C0C0 /* look-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "look-Bridging-Header.h"; sourceTree = "<group>"; };
+		F3761BF11EA034EF0072C0C0 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = ../../../Documents/CelebritiesSquaredXX/CelebritiesSquared/KeychainWrapper.h; sourceTree = "<group>"; };
+		F3761BF21EA034EF0072C0C0 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = ../../../Documents/CelebritiesSquaredXX/CelebritiesSquared/KeychainWrapper.m; sourceTree = "<group>"; };
 		F37B621C1E943A0000A4911A /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		F37B621D1E943A0000A4911A /* LookRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookRecordButton.swift; sourceTree = "<group>"; };
 		F37B621E1E943A0000A4911A /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +174,9 @@
 		F32E30A61E917AF000E6D610 /* look */ = {
 			isa = PBXGroup;
 			children = (
+				F3761BF11EA034EF0072C0C0 /* KeychainWrapper.h */,
+				F3761BF21EA034EF0072C0C0 /* KeychainWrapper.m */,
+				F3761BEF1EA02E560072C0C0 /* look.entitlements */,
 				F37B621C1E943A0000A4911A /* PhotoViewController.swift */,
 				F37B621D1E943A0000A4911A /* LookRecordButton.swift */,
 				F37B621E1E943A0000A4911A /* VideoViewController.swift */,
@@ -187,6 +195,7 @@
 				F37B62301E96DC2100A4911A /* MainPageScreen.swift */,
 				F37B62321E96F07B00A4911A /* ProfileCell.swift */,
 				F35365481E9C161A001F63B5 /* TitleScreen.swift */,
+				F3761BF01EA034EE0072C0C0 /* look-Bridging-Header.h */,
 			);
 			path = look;
 			sourceTree = "<group>";
@@ -287,7 +296,16 @@
 					F32E30A31E917AEF00E6D610 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 9KR276P772;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					F32E30BA1E917AF000E6D610 = {
 						CreatedOnToolsVersion = 8.1;
@@ -502,6 +520,7 @@
 				F37B62211E943A0000A4911A /* VideoViewController.swift in Sources */,
 				F37B621F1E943A0000A4911A /* PhotoViewController.swift in Sources */,
 				F37B622B1E94502C00A4911A /* ProfileScreen.swift in Sources */,
+				F3761BF31EA034EF0072C0C0 /* KeychainWrapper.m in Sources */,
 				F37B62291E94501F00A4911A /* RegisterScreen.swift in Sources */,
 				F37B62271E94501200A4911A /* LoginScreen.swift in Sources */,
 				F37B62311E96DC2100A4911A /* MainPageScreen.swift in Sources */,
@@ -659,12 +678,16 @@
 			baseConfigurationReference = A988549955000EF1FC274481 /* Pods-look-look.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = look/look.entitlements;
 				DEVELOPMENT_TEAM = 9KR276P772;
 				INFOPLIST_FILE = look/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intelliskye.look;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "look/look-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -674,12 +697,15 @@
 			baseConfigurationReference = 2B450481B073DFD832C16E3B /* Pods-look-look.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = look/look.entitlements;
 				DEVELOPMENT_TEAM = 9KR276P772;
 				INFOPLIST_FILE = look/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intelliskye.look;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "look/look-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

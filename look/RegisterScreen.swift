@@ -12,9 +12,9 @@ import Foundation
 class RegisterScreen: UIViewController, UITextFieldDelegate {
     
     //UI Variables
-    @IBOutlet var username: UITextField!
-    @IBOutlet var first: UITextField!
-    @IBOutlet var last: UITextField!
+    @IBOutlet var usernameField: UITextField!
+    @IBOutlet var firstField: UITextField!
+    @IBOutlet var lastField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var confirmPasswordField: UITextField!
     @IBOutlet var emailField: UITextField!
@@ -33,8 +33,13 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
     
     //Passed in variables
     var email : String = ""
-    var userName = ""
-    var tokenNum = ""
+    var username = ""
+    
+    var firstName = ""
+    var lastName = ""
+    var password = ""
+    var confirmPassword = ""
+    
     
     //Facebook Variables
     var fbFirst : String = ""
@@ -49,46 +54,46 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
         
         //Set TextBox colors and size
         let myColor : UIColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
-        first.layer.masksToBounds = true
-        last.layer.masksToBounds = true
+        firstField.layer.masksToBounds = true
+        lastField.layer.masksToBounds = true
         emailField.layer.masksToBounds = true
         passwordField.layer.masksToBounds = true
         confirmPasswordField.layer.masksToBounds = true
-        username.layer.masksToBounds = true
+        usernameField.layer.masksToBounds = true
         
-        first.layer.borderWidth = 1
-        last.layer.borderWidth = 1
-        username.layer.borderWidth = 1
+        firstField.layer.borderWidth = 1
+        lastField.layer.borderWidth = 1
+        usernameField.layer.borderWidth = 1
         emailField.layer.borderWidth = 1
         passwordField.layer.borderWidth = 1
         confirmPasswordField.layer.borderWidth = 1
         
-        first.layer.borderColor = myColor.cgColor
-        last.layer.borderColor = myColor.cgColor
+        firstField.layer.borderColor = myColor.cgColor
+        lastField.layer.borderColor = myColor.cgColor
         emailField.layer.borderColor = myColor.cgColor
-        username.layer.borderColor = myColor.cgColor
+        usernameField.layer.borderColor = myColor.cgColor
         passwordField.layer.borderColor = myColor.cgColor
         confirmPasswordField.layer.borderColor = myColor.cgColor
         //End Set Textbox Colors and Size
         
         //Declaring buttons with self
-        self.first.delegate = self
-        self.last.delegate = self
+        self.firstField.delegate = self
+        self.lastField.delegate = self
         self.passwordField.delegate = self
-        self.username.delegate = self
+        self.usernameField.delegate = self
         self.confirmPasswordField.delegate = self
         self.emailField.delegate = self
         //End Button Declaration with self
         
         if(self.fbId != ""){
             //Set Text from Facebook
-            first.text = self.fbFirst
-            last.text = self.fbLast
+            firstField.text = self.fbFirst
+            lastField.text = self.fbLast
             emailField.text = self.email
             
             //Disable text from being editted
-            first.isUserInteractionEnabled = false
-            last.isUserInteractionEnabled = false
+            firstField.isUserInteractionEnabled = false
+            lastField.isUserInteractionEnabled = false
             emailField.isUserInteractionEnabled = false
         }
     }
@@ -165,13 +170,13 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField === first{
-            last.becomeFirstResponder()
+        if textField === firstField{
+            lastField.becomeFirstResponder()
         }
-        else if textField === last{
-            username.becomeFirstResponder()
+        else if textField === lastField{
+            usernameField.becomeFirstResponder()
         }
-        else if textField === username{
+        else if textField === usernameField{
             emailField.becomeFirstResponder()
         }
         else if textField === emailField{
@@ -193,12 +198,12 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
     
     func postToServerFunction(){
         //Contingency Handling. Error handling etc.
-        var firstName : String = first.text!
-        var lastName : String = last.text!
+        var firstName : String = firstField.text!
+        var lastName : String = lastField.text!
         var password : String = passwordField.text!
         var confirmPassword : String = confirmPasswordField.text!
-        email = emailField.text!
-        userName = username.text!
+       email = emailField.text!
+        username = usernameField.text!
         
         if !email.canBeConverted(to: String.Encoding.ascii){
             let alert=UIAlertController(title: "Oops!", message: "Bad Character Entered", preferredStyle: UIAlertControllerStyle.alert);
@@ -209,12 +214,12 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
         else{
             
             if(password == confirmPassword){
-                var request = URLRequest(url: URL(string: "http://dev.celebritiessquared.com/CSPhp/Register.php")!)
+                var request = URLRequest(url: URL(string: "http://intelliskye.com/LookPhp/Register.php")!)
                 
                 request.httpMethod = "POST"
                 
                 var postString: String!
-                postString = "first=\(firstName)&last=\(lastName)&email=\(email)&username=\(userName)&password=\(password)"
+                postString = "first=\(firstName)&last=\(lastName)&email=\(email)&username=\(username)&password=\(password)"
                 request.httpBody = postString.data(using: String.Encoding.utf8)
                 
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -229,7 +234,7 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
                     }
                     
                     self.responseString = String(data: data, encoding: .utf8)!
-                    print("responseString = \(self.responseString)")
+                   // print("responseString = \(self.responseString)")
                 }
                 task.resume()
             }else{
@@ -320,6 +325,7 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
         print(allowed)
         if(responseString == "Success"){
             allowed = true
+            print(allowed)
         }
         else{
             allowed = false
@@ -327,6 +333,23 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func RegisterButt(_ sender: Any) {
+        postToServerFunction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            print(self.responseString)
+            self.checkResponseString()
+            print("GAY")
+            if self.responseString == "Success" || self.allowed || self.responseString == "<br />"{ //put if username = username from db and password = password from db then it does segue.
+                print("DUMB")
+                //EmailClass.sharedHelper.sendEmail(email: self.email, password: self.passwordField.text!)
+                self.performSegue(withIdentifier: "registerToMain", sender: self)
+                
+                   }
+        }
+
+    }
+    
+    /*
     @IBAction func registerButton(_ sender: Any) {
         //change segue to programattically seque if registration passes
         if accepted && overEighteen{
@@ -377,6 +400,7 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
             
         }    }
     
+ */
     override func viewDidAppear(_ animated: Bool) {
         
         
@@ -399,12 +423,12 @@ class RegisterScreen: UIViewController, UITextFieldDelegate {
     
     //Change to segue to How to Play
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "howtoplaySegue" {
-            let DestViewController : HowToPlayScreen = segue.destination as! HowToPlayScreen
+        if segue.identifier == "registerToMain" {
+            let DestViewController : MainPageScreen = segue.destination as! MainPageScreen
             // doSomething(sender as! UIButton)
             
-            DestViewController.email = email
-            DestViewController.tokenNum = tokenNum
+            //DestViewController.email = email
+            DestViewController.username = username
         }
     }
 }

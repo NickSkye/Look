@@ -47,6 +47,52 @@ class ProfileScreen: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     
+    func downloadJsonWithURL(){
+        //let url = NSURL(string: urlString)
+        
+        var request = URLRequest(url: URL(string: "www.intelliskye.com/LookPhp/Profiles.php")!)
+        
+        request.httpMethod = "POST"
+        
+        var postString: String!
+        postString = "username=\(username)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) ->
+            Void in
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                as? NSDictionary{
+                print(jsonObj!)
+                
+                if let contestArray = jsonObj!.value(forKey: "profile") as? NSArray{
+                    
+                    for contest in contestArray{
+                        if let contestDict = contest as? NSDictionary{
+                            
+                            if let name = contestDict.value(forKey: "pictures"){
+                                self.pictureArray.append((name as? String)!)
+                                
+                               // print(self.first)
+                            }
+                            
+                          
+                        
+                            
+                            
+                        }
+                        OperationQueue.main.addOperation ({
+                          
+                        })
+                    }
+                }
+            }
+        }).resume()
+    }
+    
+
+    
+    
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "profileToMain", sender: self)
     }
