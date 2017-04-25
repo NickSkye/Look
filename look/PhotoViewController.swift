@@ -15,6 +15,8 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 
 import UIKit
 import SwiftyCam
+import AWSCore
+import AWSS3
 
 
 class PhotoViewController: UIViewController {
@@ -71,13 +73,13 @@ class PhotoViewController: UIViewController {
     func postImageToServer(image: String, latitude: String, longitude: String, username: String){
         //Contingency Handling. Error handling etc.
         
-        var request = URLRequest(url: URL(string: "http://www.Intelliskye.com/LookPhp/SetLeaderboard.php")!)
+        var request = URLRequest(url: URL(string: "http://www.Intelliskye.com/LookPhp/PostPhoto.php")!)
         
         request.httpMethod = "POST"
         
         var postString: String!
         print("username to post \(username)")
-        postString = "username=\(username)&image=\(image)&latitude=\(latitude)&longitude=\(longitude)"
+        postString = "username=\(username)&pictureurl=\(image)&latitude=\(latitude)&longitude=\(longitude)"
         request.httpBody = postString.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -95,7 +97,8 @@ class PhotoViewController: UIViewController {
             print("responseString = \(self.responseString)")
             
         }
-        
+        dismiss(animated: true, completion: nil)
+        //self.present(MainPageScreen(), animated: true, completion: nil)
         checkResponseString()
         task.resume()
     }
@@ -106,6 +109,7 @@ class PhotoViewController: UIViewController {
         if(self.responseString == "Success"){
             allowed = true
             print("true///////////////////////////////")
+            
             
         }
         else{
